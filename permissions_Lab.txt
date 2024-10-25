@@ -1,0 +1,52 @@
+#cd /tmp/
+#rm -rfv /tmp/*
+----------------
+Numeric Mode:
+----------------
+1. create 3 dir music, movies, Images
+2. create 6 music files inside music dir named as songs1.mp3, songs2.mp3,.....songs6.mp3
+3. create 6 video files inside movies dir named film1.mkv, film2.mkv,...,film6.mkv
+4. create 6 picture files inside images dir named Pic1.jpg, Pic2.jpg,...,Pic6.jpg
+5. change permission for all song files as read only for all U,G,O
+6. change permission for all video files as U=write,Exec G=write,Exec O=NOne
+7. change permission for all picture files, set only read and write permission for all User&Group but only Exec for Others.
+8. full permissions has to set for music,movies and Images directories and only for Users and Others.
+
+--------------
+Symbolic Mode:
+--------------
+9. change permission for song files 4,5,6 as read and write for U and G
+10. change permission for video files 1,2,3 as U=rw-, G=-wx, O=---.
+11. change permission for picture files, set only read and write permission for all UGO.
+
+
+-------------------
+Special permissions
+-------------------
+1. set suid for all songs symbolic mode
+2. set sgid for music dir numeric mode
+3. set stickybit for movies dir numeric mode
+4. set stickybit for Images dir symbolic mode
+5. set suid for all videos numeric mode
+6. set sgid for Images dir using symbolic mode
+7. Remove all the special permissions assigned.
+
+----------
+ACL
+----------
+create 2 users (user1, user2) 2 groups (groupA,groupB)
+
+1. useradd <username>; passwd <username>
+ex: useradd Tom ; passwd Tom
+
+2. Add a new group: Ex: groupadd <groupname>
+
+3. adding user to a group: Ex: usermod -aG <groupname> <username>
+
+4. set acl permission for music dir to user1 = rw, groupB=rx
+5. set acl permission for movies dir and its sub-dir and files to user2 = rwx, groupA = x, groupB = rx
+6. remove acl permission from user2 for the dir movies
+7. remove all acl permissions for the dir music
+---------------
+ll for files
+ls -ld for dir
